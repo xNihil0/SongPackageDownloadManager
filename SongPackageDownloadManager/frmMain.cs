@@ -34,12 +34,15 @@ namespace SongPackageDownloadManager
             PackageList packageList = JsonConvert.DeserializeObject<PackageList>(rawjson);
             List<SongDetail> songDetail = packageList.data;
             StringBuilder sb = new StringBuilder();
+            int totalsize=0;
             foreach (SongDetail detail in songDetail)
             {
                 SongAttributes songAttributes = detail.attributes;
-                sb.AppendLine(string.Format("Pack Name: {0} Average Difficulty: {1}  Size: {2}", songAttributes.name, songAttributes.average, songAttributes.size));
+                totalsize += songAttributes.size;
+                sb.AppendLine(songAttributes.download);
+                //sb.AppendLine(string.Format("Pack Name: {0} Average Difficulty: {1}  Size: {2}", songAttributes.name, songAttributes.average, songAttributes.size));
             }
-            textBox1.Text = sb.ToString();
+            textBox1.Text = sb.ToString() + Environment.NewLine + "Total Size: " + (totalsize / 1024 / 1024).ToString();
         }
     }
 }
