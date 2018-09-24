@@ -71,7 +71,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnGetPkgLst);
             this.Name = "frmMain";
-            this.Text = "Etterna Song Package ";
+            this.Text = "Etterna Song Package Manager";
             this.ResumeLayout(false);
             this.PerformLayout();
 
