@@ -30,7 +30,7 @@
         {
             this.btnGetPkgLst = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lstSongPkgs = new System.Windows.Forms.CheckedListBox();
+            this.btnGetColLst = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGetPkgLst
@@ -39,7 +39,7 @@
             this.btnGetPkgLst.Name = "btnGetPkgLst";
             this.btnGetPkgLst.Size = new System.Drawing.Size(75, 23);
             this.btnGetPkgLst.TabIndex = 0;
-            this.btnGetPkgLst.Text = "Init";
+            this.btnGetPkgLst.Text = "Packs";
             this.btnGetPkgLst.UseVisualStyleBackColor = true;
             this.btnGetPkgLst.Click += new System.EventHandler(this.btnGetPkgLst_Click);
             // 
@@ -52,21 +52,22 @@
             this.textBox1.Size = new System.Drawing.Size(820, 397);
             this.textBox1.TabIndex = 1;
             // 
-            // lstSongPkgs
+            // btnGetColLst
             // 
-            this.lstSongPkgs.FormattingEnabled = true;
-            this.lstSongPkgs.Location = new System.Drawing.Point(12, 41);
-            this.lstSongPkgs.Name = "lstSongPkgs";
-            this.lstSongPkgs.Size = new System.Drawing.Size(820, 404);
-            this.lstSongPkgs.TabIndex = 2;
-            this.lstSongPkgs.Visible = false;
+            this.btnGetColLst.Location = new System.Drawing.Point(93, 12);
+            this.btnGetColLst.Name = "btnGetColLst";
+            this.btnGetColLst.Size = new System.Drawing.Size(80, 23);
+            this.btnGetColLst.TabIndex = 3;
+            this.btnGetColLst.Text = "Collections";
+            this.btnGetColLst.UseVisualStyleBackColor = true;
+            this.btnGetColLst.Click += new System.EventHandler(this.btnGetColLst_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 450);
-            this.Controls.Add(this.lstSongPkgs);
+            this.Controls.Add(this.btnGetColLst);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnGetPkgLst);
             this.Name = "frmMain";
@@ -80,7 +81,7 @@
 
         private System.Windows.Forms.Button btnGetPkgLst;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckedListBox lstSongPkgs;
+        private System.Windows.Forms.Button btnGetColLst;
     }
 }
 

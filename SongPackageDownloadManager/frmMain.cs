@@ -32,17 +32,44 @@ namespace SongPackageDownloadManager
             response.Close();
 
             PackageList packageList = JsonConvert.DeserializeObject<PackageList>(rawjson);
-            List<SongDetail> songDetail = packageList.data;
+            List<PackageDetails> packageDetails = packageList.data;
             StringBuilder sb = new StringBuilder();
-            int totalsize=0;
-            foreach (SongDetail detail in songDetail)
+            long totalsize=0;
+            foreach (PackageDetails detail in packageDetails)
             {
-                SongAttributes songAttributes = detail.attributes;
-                totalsize += songAttributes.size;
-                sb.AppendLine(songAttributes.download);
-                //sb.AppendLine(string.Format("Pack Name: {0} Average Difficulty: {1}  Size: {2}", songAttributes.name, songAttributes.average, songAttributes.size));
+                PackageAttributes packageAttributes = detail.attributes;
+                totalsize += packageAttributes.size;
+                //sb.AppendLine(packageAttributes.download);
+                sb.AppendLine(string.Format("Pack Name: {0}\tAverage Difficulty: {1}\tSize: {2}", packageAttributes.name, packageAttributes.average, packageAttributes.size));
             }
-            textBox1.Text = sb.ToString() + Environment.NewLine + "Total Size: " + (totalsize / 1024 / 1024).ToString();
+            textBox1.Text = sb.ToString() + Environment.NewLine + "Total Size: " + (totalsize / 1024 / 1024 / 1024).ToString();
+        }
+
+        private void btnGetColLst_Click(object sender, EventArgs e)
+        {
+            WebRequest request = WebRequest.Create("https://etternaapi.xnihilo.live/v2/packs/collections");
+            WebResponse response = request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+            string rawjson = reader.ReadToEnd();
+            reader.Close();
+            response.Close();
+
+            CollectionList collectionList = JsonConvert.DeserializeObject<CollectionList>(rawjson);
+            List<CollectionDetails> collectionDetails = collectionList.data;
+            StringBuilder sb = new StringBuilder();
+            long totalsize = 0;
+            foreach (CollectionDetails detail in collectionDetails)
+            {
+                CollectionAttributes collectionAttributes = detail.attributes;
+                foreach (Pack pack in collectionAttributes.packs)
+                {
+                    totalsize += pack.size;
+                    sb.AppendLine(pack.download);
+                    //sb.AppendLine(string.Format("Pack Name: {0}\tAverage Difficulty: {1}\tSize: {2}", pack.packname, pack.average, pack.size));
+                }
+                textBox1.Text = sb.ToString() + Environment.NewLine + "Total Size: " + (totalsize / 1024 / 1024 / 1024).ToString();
+            }
         }
     }
 }

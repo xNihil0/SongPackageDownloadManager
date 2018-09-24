@@ -6,26 +6,6 @@ using System.Windows.Forms;
 
 namespace SongPackageDownloadManager
 {
-    public class SongAttributes
-    {
-        public string name { get; set; }
-        public double average { get; set; }
-        public string download { get; set; }
-        public int size { get; set; }
-    }
-
-    public class SongDetail
-    {
-        public string type { get; set; }
-        public string id { get; set; }
-        public SongAttributes attributes { get; set; }
-    }
-
-    public class PackageList
-    {
-        public List<SongDetail> data { get; set; }
-    }
-
     static class Program
     {
         /// <summary>
