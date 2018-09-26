@@ -23,7 +23,7 @@ namespace SongPackageDownloadManager
 
         private void btnGetPkgLst_Click(object sender, EventArgs e)
         {
-            string requestURL = "https://etternaapi.xnihilo.live/v2/packs";
+            //string requestURL = "https://etternaapi.xnihilo.live/v2/packs";
             WebRequest request = WebRequest.Create(requestURL);
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();
